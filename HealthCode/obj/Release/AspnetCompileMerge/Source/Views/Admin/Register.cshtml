@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+@using (Html.BeginForm("Register", "Admin", FormMethod.Post, new { autocomplete = "off" }))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h2>Register</h2>
+                <table class="table table-borderless table-striped">
+                    <tbody>
+                        <tr>
+                            <td>Mobile</td>
+                            <td><input type="text" id="Mobile" class="form-control" name="Mobile" maxlength="10" autocomplete="on" /></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><input type="text" id="Email" class="form-control" name="Email" autocomplete="off" /></td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td><input type="password" id="Password" class="form-control" name="Password" autocomplete="off" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </td>
+                            <td>
+                                @Html.ActionLink("Login", "Index", "Admin", null, new { @class = "btn btn-primary" })
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+}

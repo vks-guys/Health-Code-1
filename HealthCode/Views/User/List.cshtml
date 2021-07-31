@@ -1,0 +1,40 @@
+﻿@model IEnumerable<HealthCode.Bussiness.Entity.User>
+
+@{
+    ViewBag.Title = "User List";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>User List</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.ActionLink("Dashboard", "Index", "Dashboard")
+        </div>
+        <div class="col-md-6">
+            @Html.ActionLink("Add", "Register", "User")
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Mobile</td>
+                    <td>@item.Email</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { Id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

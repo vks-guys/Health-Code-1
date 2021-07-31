@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/Content/css/StyleSheet.css" rel="stylesheet" />
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Start top header link -->
+        <div class="topHeaderLink">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col col-md-4 ml-auto">
+                        <ul class="topHeaderLink-icon">
+                            <li>
+                                <a href="/Home/Cart">
+                                    <i class="top-mc cart-icon"></i><span></span>
+                                </a>
+                                <div class="cartvalue" id="cartATag">
+                                    @{
+                                        var cartValue = Session[HealthCode.Bussiness.DataAccess.Constants.SessionContext.Cart];
+                                        if (cartValue == null)
+                                        {
+                                            <a id="pc" href="/Home/Cart">0</a>
+                                        }
+                                        else
+                                        {
+                                            int count = ((List<int>)cartValue).Count;
+                                            <a id="pc" href="/Home/Cart">@count</a>
+                                        }
+                                    }
+                                </div>
+                            </li>
+                            <li><a href="/Admin"><i class="top-mc login-icon"></i><span>&nbsp;</span></a></li>
+
+                            <!--<li><a href="#"><i class="top-mc shopping-icon"></i><span>Lab Test Results</span></a>-->
+
+                            <li><a href="#search"><i class="top-mc search-icon"></i><span>&nbsp;</span></a></li>
+                            <li><a href="#"><i class="top-mc facebook-icon"></i><span>&nbsp;</span></a></li>
+                            <li><a href="#"><i class="top-mc call-icon"></i><span>Call us</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End top header link -->
+        <!-- Start top header -->
+        <div class="topHeader">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="/Home"><img src="~/Content/images/logo.png" /></a>
+                            <div class="toggle-nav"><i class="bi bi-list"></i></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <ul class="menu">
+                            <li class="p_menu">
+                                <a href="#">Services</a>
+                                <ul class="submenu">
+                                    <li><a href="/Home/For_patients">For Patients</a></li>
+                                    <li><a href="/Home/healthcare_provider">For Doctors & Healthcare providers</a></li>
+                                    <li><a href="/Home/corporates_ngo">For corporates & NGOs</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Departments</a></li>
+                            <li><a href="#">Technology</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li class="p_menu">
+                                <a href="#">About Us</a>
+                                <ul class="submenu">
+                                    <li><a href="#">History</a></li>
+                                    <li><a href="#">Team</a></li>
+                                    <li><a href="#">Achievements</a></li>
+                                    <li><a href="#">Quality Assurance</a></li>
+                                    <li><a href="#">Panels</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid second-navbar">
+                <div class="row">
+                    <ul>
+                        <li><a href="#"><i class="labTest"></i><span>Test Information </span></a></li>
+                        <li><a href="/Home/HomeCollection"><i class="collection"></i><span>Book Home Collection</span></a></li>
+                        <li><a href="/Home/TestOrPackages"><i class="package"></i><span>Test & Packages</span></a></li>
+                        <li><a href="#"><i class="information"></i><span>News & Information</span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- End top header -->
+        @RenderBody()
+        <!-- Start footer -->
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="paddingText">
+                            <h5 class="titleText">Dr. P. Bhasin Pathlabs (P) Ltd.</h5>
+                            <div class="text">Established by Dr. Pramod Bhasin , Dr. P. Bhasin PathLabs has successfully developed itself into a centre of excellence in the field of laboratory medicine by adopting latest techniques, inducting highly skilled professionals and introducing latest state of the art analyzers from USA, Germany, France and Japan.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="titleText">Main Lab and Head Office</h5>
+                        <div class="text">
+                            S-13, Greater Kailash Part – 1,<br />
+                            New Delhi – 110048,<br />
+                            Ph : 9311193111,<br />
+                            Email : query@bhasinpathlabs.com
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+        <!-- End footer -->
+
+
+    </div>
+
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+<script>
+    $(document).ready(function () {
+        $('.toggle-nav').click(function () {
+            $('.menu').addClass('active');
+            $('body').append("<div class='menu_backdrop'></div>");
+        })
+        $(document).on('click', '.menu_backdrop', function () {
+            $('.menu').removeClass('active');
+            $('.menu_backdrop').remove();
+        })
+        //$('#myCarousel').carousel({
+        //    interval: 2000
+        //})
+        //$('#testimonialSlider').carousel({
+        //    interval: 2000
+        //});
+
+    });
+</script>
+</body>
+</html>

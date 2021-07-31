@@ -1,0 +1,14 @@
+﻿@model IEnumerable<HealthCode.Bussiness.Entity.TestOrPackage>
+@{
+    ViewBag.Title = "Cart";
+}
+
+<div class="container">
+    <h4>Cart</h4>
+    <div class="row">
+        <div id="CartItemDiv" class="col-md-12">
+            @Html.Partial("_Cart", Model)
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Custom/cart.js"></script>

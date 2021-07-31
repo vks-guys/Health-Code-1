@@ -1,0 +1,132 @@
+﻿@model HealthCode.Bussiness.Entity.HomeCollectionData
+@{
+    ViewBag.Title = "home_collection";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pageBnner">
+    <img src="~/Content/images/for_patients.jpg" alt="" />
+</div>
+<div class="container-fluid page">
+    <div class="container pt-5 pb-5">
+        <div class="formBox">
+            @using (Html.BeginForm("HomeCollection", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                            @*<input type="text" class="form-control" placeholder="Full name">*@
+                                            @Html.TextBox("Name", "", new { @class = "form-control", placeholder = "Full name" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                            @*<input type="text" class="form-control" placeholder="Email Address">*@
+                                            @Html.TextBox("Email", "", new { @class = "form-control", placeholder = "Email Address" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="fa fa-home"></i></span>
+                                            @*<input type="text" class="form-control" placeholder="House No">*@
+                                            @Html.TextBox("HouseNo", "", new { @class = "form-control", placeholder = "House No" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="fa fa-cubes"></i></span>
+                                            @*<input type="text" class="form-control" placeholder="Floor">*@
+                                            @Html.TextBox("Floor", "", new { @class = "form-control", placeholder = "Floor" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="fa fa-map" aria-hidden="true"></i></span>
+                                            @*<input type="text" class="form-control" placeholder="Colony">*@
+                                            @Html.TextBox("Colony", "", new { @class = "form-control", placeholder = "Colony" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                            @*<input type="text" class="form-control" placeholder="Landmark">*@
+                                            @Html.TextBox("Landmark", "", new { @class = "form-control", placeholder = "Landmark" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                                            <select id="Country" name="Country" class="form-control">
+                                                <option>Select</option>
+                                                <option>India</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                            @*<input type="text" class="form-control" placeholder="Phone Number" aria-label="Username" aria-describedby="basic-addon1">*@
+                                            @Html.TextBox("PhoneNumber", "", new { @class = "form-control", placeholder = "Phone Number" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                            @*<input type="text" class="form-control" placeholder="Select Preferred Date">*@
+                                            @Html.TextBox("SelectPreferredDate", "", new { @class = "form-control", placeholder = "Select Preferred Date" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                                            @*<input type="text" class="form-control" placeholder="Select Preffered Time">*@
+                                            @Html.TextBox("SelectPrefferedTime", "", new { @class = "form-control", placeholder = "Select Preffered Time" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="fa fa-address-card" aria-hidden="true"></i></span>
+                                            @*<textarea class="form-control" placeholder="Message"></textarea>*@
+                                            @Html.TextArea("Message", "", new { @class = "form-control", placeholder = "Message" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <input class="form-control" type="file" id="formFile" name="FormFile">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group text-center">
+                                            <button type="submit" class="btn btn-primary btn-block">Submit Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

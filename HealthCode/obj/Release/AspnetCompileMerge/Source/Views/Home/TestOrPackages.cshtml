@@ -1,0 +1,199 @@
+﻿@model IEnumerable<HealthCode.Bussiness.Entity.TestOrPackage>
+@*
+    @{
+        ViewBag.Title = "TestOrPackages";
+    }
+
+    <h2>TestOrPackages</h2>
+
+    <div class="container-fluid">
+        @foreach (var item in Model)
+        {
+            <h1>@item.TestOrPackageName</h1>
+        }
+    </div>*@
+
+@{
+    ViewBag.Title = "packages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pageBnner">
+    <img src="~/Content/images/for_patients.jpg" alt="" />
+</div>
+@*test*@
+<div class="container-fluid page">
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="Tests-tab" data-bs-toggle="tab" data-bs-target="#Tests" type="button" role="tab" aria-controls="Tests" aria-selected="true">Tests</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#Packages" type="button" role="tab" aria-controls="Packages" aria-selected="false">Packages</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="Tests" role="tabpanel" aria-labelledby="Tests-tab">
+                        @*<div class="row">
+                                <div class="col-md-12">
+                                    <div class="selectBox">
+                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control inputPadding" placeholder="Type Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <button class="btn searchBtn" type="button" id="button-addon2">Search</button>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="accordion" id="accordionExample">
+                                    @foreach (var item in Model.Where(a => a.TestOrPackageType == 1))
+                                    {
+                                        <div class="accordion-item">
+                                            <div class="accordion-header">
+                                                <div class="cartSec">
+                                                    <div class="price">
+                                                        INR <span>@item.TestOrPackagePrice</span>
+                                                    </div>
+                                                    <div class="cartButton" onclick="fn_AddToCart(@item.Id);">Add Cart</div>
+                                                </div>
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#n_@item.Id" aria-expanded="false" aria-controls="collapseOne">
+                                                    @item.TestOrPackageName
+                                                </button>
+                                            </div>
+                                            <div id="n_@item.Id" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="detail_head">Detail</div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <ul class="detail">
+                                                                <li><strong>Pre Test Information: </strong>@item.PreTestInformation</li>
+                                                                <li><strong>Report Delivery: </strong>@item.DeliveryReport</li>
+                                                                <li><strong>Sample Required :</strong>@item.SampleRequired</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-6 brd-left">
+                                                            <div class="detail_text">
+                                                                @item.Description
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="Packages" role="tabpanel" aria-labelledby="Packages-tab">
+                        @*<div class="row">
+                                <div class="col-md-12">
+                                    <div class="selectBox">
+                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control inputPadding" placeholder="Type Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <button class="btn searchBtn" type="button" id="button-addon2">Search</button>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="accordion" id="accordionExample">
+                                    @foreach (var item in Model.Where(a => a.TestOrPackageType == 2))
+                                    {
+                                        <div class="accordion-item">
+                                            <div class="accordion-header">
+                                                <div class="cartSec">
+                                                    <div class="price">
+                                                        INR <span>@item.TestOrPackagePrice</span>
+                                                    </div>
+                                                    <div class="cartButton" onclick="fn_AddToCart(@item.Id);">Add Cart</div>
+                                                </div>
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#n_@item.Id" aria-expanded="false" aria-controls="collapseOne">
+                                                    @item.TestOrPackageName
+                                                </button>
+                                            </div>
+                                            <div id="n_@item.Id" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="detail_head">Detail</div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <ul class="detail">
+                                                                <li><strong>Pre Test Information: </strong>@item.PreTestInformation</li>
+                                                                <li><strong>Report Delivery: </strong>@item.DeliveryReport</li>
+                                                                <li><strong>Sample Required :</strong>@item.SampleRequired</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-6 brd-left">
+                                                            <div class="detail_text">
+                                                                @item.Description
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script src="~/Scripts/Custom/cart.js"></script>

@@ -1,0 +1,99 @@
+﻿@model IEnumerable<HealthCode.Bussiness.Entity.TestOrPackage>
+
+@{
+    decimal total = 0;
+}
+<div class="row">
+    <div class="col-md-8">
+        <table id="tblTestOrPackages" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Test/Package Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        total += item.TestOrPackagePrice;
+                        <tr>
+                            <td>@item.TestOrPackageName <input type="hidden" value="@item.Id" /></td>
+                            <td>@item.TestOrPackagePrice</td>
+                            <td>
+                                <a href="#" onclick="fn_DeleteCartItem(@item.Id, this);">Del</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3">No Test or Package added here! <a href="/Home/TestOrPackages">Click Here</a></td>
+                    </tr>
+                }
+            </tbody>
+            @if (Model.Count() > 0)
+            {
+                <tfoot>
+                    <tr>
+                        <td><h4 style="float: right;">Total</h4></td>
+                        <td><h4 style="float: left;">@total</h4></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            }
+        </table>
+    </div>
+    <div class="col-md-4">
+        @if (Model.Count() > 0)
+        {
+            using (Html.BeginForm("Cart", "Home", FormMethod.Post))
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" id="Name" name="Name" class="form-control" placeholder="Full name">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input type="text" id="Email" name="Email" class="form-control" placeholder="Email Address">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input type="text" id="Mobile" name="Mobile" class="form-control" placeholder="Mobile">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="input-group mb-3">
+                            <input type="submit" class="form-control" onclick="fn_Validate()" value="Submit">
+                            <input id="hdnTestOrPackages" name="hdnTestOrPackages" type="hidden" value="" />
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<script>
+    function fn_Validate() {
+        var arrTestOrPacakages = new Array();
+        $('#tblTestOrPackages tbody tr').each(function (index, item) {
+            
+            arrTestOrPacakages.push({
+                Id: $(item).find('td:eq(0) input[type="hidden"]').val(),
+                Price: $(item).find('td:eq(1)').text()
+            })
+        });
+        console.log(arrTestOrPacakages);
+        $('#hdnTestOrPackages').val(JSON.stringify(arrTestOrPacakages));
+    }
+</script>

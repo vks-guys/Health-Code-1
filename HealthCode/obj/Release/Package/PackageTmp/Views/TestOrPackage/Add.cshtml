@@ -1,0 +1,78 @@
+﻿@model HealthCode.Bussiness.Entity.TestOrPackage
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    .rowMargin {
+        margin: 10px 0;
+    }
+
+    .form-group label {
+        margin: 12px 0;
+        font-style: italic;
+        font-weight: 500;
+    }
+</style>
+
+<div class="container">
+    <div class="row rowMargin">
+        <h2>Add</h2>
+    </div>
+    @using (Html.BeginForm("Add", "TestOrPackage", FormMethod.Post))
+    {
+        <div class="row">
+            <div>
+                Test @Html.RadioButtonFor(m => m.TestOrPackageType, "1", new { @checked = "checked" })
+                Package @Html.RadioButtonFor(m => m.TestOrPackageType, "2")
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Test Name</label>
+                    @Html.TextBoxFor(m => m.TestOrPackageName, new { @class = "form-control", placeholder = "Test/Package Name" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Test/Package Price</label>
+                    @Html.TextBoxFor(m => m.TestOrPackagePrice, new { @class = "form-control", placeholder = "Test/Package Price" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Pre Test Information</label>
+                    @Html.TextBoxFor(m => m.PreTestInformation, new { @class = "form-control", placeholder = "Pre Test Information" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Sample Required</label>
+                    @Html.TextBoxFor(m => m.SampleRequired, new { @class = "form-control", placeholder = "Sample Required" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Delivery Report</label>
+                    @Html.TextBoxFor(m => m.DeliveryReport, new { @class = "form-control", placeholder = "Delivery Report" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Description</label>
+                    @Html.TextBoxFor(m => m.Description, new { @class = "form-control", placeholder = "Description" })
+                </div>
+            </div>
+        </div>
+        <div class="row rowMargin">
+            <div class="col-md-6">
+                <input type="submit" class="btn btn-primary" />
+            </div>
+            <div class="col-md-6">
+                @Html.ActionLink("List", "Index", "TestOrPackage", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    }
+</div>

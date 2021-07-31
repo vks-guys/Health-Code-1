@@ -1,0 +1,63 @@
+﻿@model IEnumerable<HealthCode.Bussiness.Entity.TestOrPackage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .rowMargin {
+        margin: 10px 0;
+    }
+</style>
+
+<div class="container">
+    <div class="row rowMargin">
+        <div class="col-md-6">
+            <h2>Test Or Package List</h2>
+        </div>
+        <div class="col-md-6">
+            @Html.ActionLink("Add", "Add", "TestOrPackage", null, new { @class = "btn btn-primary", style = "float: right;" })
+        </div>
+    </div>
+    <div class="row rowMargin">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Test/Package Name</th>
+                    <th>Test/Package Type</th>
+                    <th>Test/Package Price</th>
+                    <th>Pre Test Information</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.TestOrPackageName</td>
+                            @if (@item.TestOrPackageType == 1)
+                            {
+                                <td>Test</td>
+                            }
+                            @if (@item.TestOrPackageType == 2)
+                            {
+                                <td>Package</td>
+                            }
+                            <td>@item.TestOrPackagePrice</td>
+                            <td>@item.PreTestInformation</td>
+                            <td>@Html.ActionLink("Edit", "Edit", new { Id = item.Id })</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5">Test or Packages Not Found!</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

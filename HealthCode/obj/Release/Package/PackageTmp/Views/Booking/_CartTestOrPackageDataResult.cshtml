@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HealthCode.Bussiness.Entity.TestOrPackage>
+@{ 
+    decimal Total = 0;
+}
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Test/Package Name</th>
+            <th>Price</th>
+            <th>Test/Package Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                Total += item.TestOrPackagePrice;
+                <tr>
+                    <td>@item.TestOrPackageName</td>
+                    <td>@item.TestOrPackagePrice</td>
+                    @if (@item.TestOrPackageType == 1)
+                    {
+                        <td>Test</td>
+
+                    }
+                    else
+                    {
+                        <td>Package</td>
+                    }
+                </tr>
+            }
+            <tr><td>Total</td><td colspan="2">@Total</td></tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">No Records were found!</td>
+            </tr>
+        }
+    </tbody>
+</table>

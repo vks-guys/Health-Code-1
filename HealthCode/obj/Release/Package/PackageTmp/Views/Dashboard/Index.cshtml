@@ -1,0 +1,93 @@
+﻿@using HealthCode.ResourceFiles
+
+@{
+    ViewBag.Title = AdminResx.AdminDashboard;
+}
+
+
+
+<style>
+    .rowBorder {
+        border: 1px solid #777;
+        padding: 10px;
+        height: 150px;
+        width: 100%;
+        border-radius: 25px;
+    }
+
+        /*.rowBorder div {
+            margin: 68px 0;
+        }*/
+
+        .rowBorder div h2 {
+            margin: 5px 0px;
+            font-size: 20px;
+        }
+
+    .containerMain {
+        margin: 14px 0px;
+    }
+</style>
+<div class="container">
+    <div class="containerMain">
+        <div class="row">
+            <h2>Dashboard</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="rowBorder">
+                    <div class="row">
+                        <h2>Test/Package</h2>
+                    </div>
+                    <div class="row" style="padding: 66px 5px;">
+                        <div class="col-md-6">
+                            @Html.ActionLink("List", "Index", "TestOrPackage", null, new { style = "float: left;" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.ActionLink("Add", "Add", "TestOrPackage", null, new { style = "float: right;" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="rowBorder">
+                    <div>
+                        <h2>User</h2>
+                    </div>
+                    <div class="row" style="padding: 66px 5px;">
+                        <div class="col-md-6">
+                            @Html.ActionLink("List", "List", "User", null, new { style = "float: left;" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.ActionLink("Add", "Register", "User", null, new { style = "float: right;" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="rowBorder">
+                    <div>
+                        <h2>Home Collection</h2>
+                    </div>
+                    <div class="row" style="padding: 66px 5px;">
+                        <div class="col-md-6">
+                            @Html.ActionLink("List", "Index", "HomeCollection", null, new { style = "float: left;" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="rowBorder">
+                    <div>
+                        <h2>Booking</h2>
+                    </div>
+                    <div class="row" style="padding: 66px 5px;">
+                        <div class="col-md-6">
+                            @Html.ActionLink("List", "Index", "Booking", null, new { style = "float: left;" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

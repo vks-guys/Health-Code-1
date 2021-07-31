@@ -1,0 +1,49 @@
+﻿@model HealthCode.Bussiness.Entity.User
+@{
+    ViewBag.Title = "Admin Login";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h2>Login</h2>
+
+            @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+            {
+                <table class="table table-borderless table-striped">
+                    <tbody>
+                        <tr>
+                            <td>User Name</td>
+                            <td>
+                                <div class="form-group"><input class="form-control" type="text" id="UserName" name="UserName" /></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td><div class="form-group"><input class="form-control" type="password" id="Password" name="Password" /></div></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </td>
+                            <td>
+                                <div class="form-group">@Html.ActionLink("Register", "Register", "Admin", null, new { @class = "btn btn-primary" })</div>
+                            </td>
+                        </tr>
+                        @if (ViewBag.Message != null)
+                        {
+                            <tr>
+                                <td colspan="2">
+                                    <p style="color:red;">
+                                        @ViewBag.Message
+                                    </p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>
